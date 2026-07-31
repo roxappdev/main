@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Online image compressor. Compress JPG, PNG, WebP images directly in your browser without uploading to any server.">
+    <meta name="keywords" content="image compressor, compress images, reduce image size, online tool, free, browser">
+    <title>Compress image — Veox</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../v.png" type="image/png">
+    <link rel="stylesheet" href="../navbar.css">
+</head>
+<body>
+    <nav class="veox-nav">
+        <a href="../index.html" class="veox-nav-logo">
+            <img src="../v.png" alt="Veox" width="24" height="24" style="border-radius:5px">
+            Veox
+        </a>
+    </nav>
+    <div class="container">
+        <header class="header">
+            <h1>Compress image</h1>
+            <p class="tagline">Compress images directly in your browser. No server uploads, your data stays private.</p>
+        </header>
+
+        <main>
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" multiple="">
+                <div class="upload-text">
+                    <p>Drop images here or click to select</p>
+                    <p class="subtext">Supports JPG, PNG, WebP</p>
+                </div>
+            </div>
+
+            <div class="settings">
+                <div class="setting-group">
+                    <label for="quality">Quality: <span id="qualityValue">80%</span></label>
+                    <input type="range" id="quality" min="10" max="100" value="80" step="5" style="--slider-progress: 80%;">
+                    <div class="quality-info">
+                        Lower values = smaller file size, lower quality
+                    </div>
+                </div>
+            </div>
+
+            <button id="compressBtn" class="compress-btn" disabled="">Compress Images</button>
+
+            <div class="loading" id="loading" style="display: none;">
+                <p>Compressing images...</p>
+                <div class="spinner"></div>
+            </div>
+
+            <div class="results" id="results" style="display: none;">
+                <h3>Compression Results</h3>
+                <button id="downloadAllBtn" class="download-all-btn">Download All Compressed Images</button>
+                <div id="resultsList"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="browser-image-compression.js"></script>
+    <script src="compressor.js"></script>
+</body>
+</html>

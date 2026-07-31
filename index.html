@@ -7,7 +7,6 @@
     <meta property="og:title" content="Veox — browser tools, no data sent to server">
     <meta property="og:description" content="Compress images, extract text, make collages, and convert PDF to JPG — right in your browser.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://veox.org">
     <title>Veox — Tools right in your browser</title>
     <link rel="icon" type="image/png" sizes="32x32" href="v.png">
 
@@ -56,7 +55,6 @@
             text-decoration: none; letter-spacing: -0.02em;
             display: flex; align-items: center; gap: 10px;
         }
-        .nav-logo svg { width: 30px; height: 30px; }
         .nav-links { display: flex; align-items: center; gap: 28px; }
         .nav-links a {
             color: var(--text-secondary); text-decoration: none;
@@ -238,7 +236,7 @@
 
     <nav class="navbar">
         <div class="container">
-            <a href="/" class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <img src="v.png" alt="Veox" width="30" height="30" style="border-radius:6px">
                 Veox
             </a>
@@ -247,7 +245,7 @@
             </div>
             <button class="mobile-menu-btn" aria-label="Menu">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>
+                    <path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h16"></path>
                 </svg>
             </button>
         </div>
@@ -256,7 +254,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                 Everything in the browser, no upload to server
             </div>
             <h1>Your browser — <span>the only tool</span> you need.</h1>
@@ -273,12 +271,12 @@
             </div>
             <div class="bento-grid">
 
-                <a href="https://compress-image.veox.org" class="bento-card card-compress" target="_blank" rel="noopener">
+                <a href="compress-image/index.html" class="bento-card card-compress">
                     <div class="bento-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
                         </svg>
                     </div>
                     <h3>Image Compression</h3>
@@ -287,18 +285,18 @@
                         <span>JPG</span><span>PNG</span><span>WebP</span>
                     </div>
                     <div class="bento-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                     </div>
                 </a>
 
-                <a href="https://image-to-text.veox.org" class="bento-card card-ocr" target="_blank" rel="noopener">
+                <a href="image-to-text/index.html" class="bento-card card-ocr">
                     <div class="bento-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
                     </div>
                     <h3>Text Extraction from Images</h3>
@@ -307,16 +305,16 @@
                         <span>OCR</span>
                     </div>
                     <div class="bento-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                     </div>
                 </a>
 
-                <a href="https://collage.veox.org" class="bento-card card-collage" target="_blank" rel="noopener">
+                <a href="collage/index.html" class="bento-card card-collage">
                     <div class="bento-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <circle cx="8.5" cy="8.5" r="1.5"/>
-                            <polyline points="21 15 16 10 5 21"/>
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
                         </svg>
                     </div>
                     <h3>Collage Creation</h3>
@@ -325,18 +323,18 @@
                         <span>Auto-grid based on number of photos</span><span>Resolution selection</span><span>Data privacy</span>
                     </div>
                     <div class="bento-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                     </div>
                 </a>
 
-                <a href="https://pdf-to-jpg.veox.org" class="bento-card card-pdf" target="_blank" rel="noopener">
+                <a href="pdf-to-jpg/index.html" class="bento-card card-pdf">
                     <div class="bento-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <path d="M8 15h.01"/><path d="M12 15h.01"/><path d="M16 15h.01"/>
-                            <path d="M8 19h.01"/><path d="M12 19h.01"/><path d="M16 19h.01"/>
-                            <path d="M8 11h.01"/><path d="M12 11h.01"/><path d="M16 11h.01"/>
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <path d="M8 15h.01"></path><path d="M12 15h.01"></path><path d="M16 15h.01"></path>
+                            <path d="M8 19h.01"></path><path d="M12 19h.01"></path><path d="M16 19h.01"></path>
+                            <path d="M8 11h.01"></path><path d="M12 11h.01"></path><path d="M16 11h.01"></path>
                         </svg>
                     </div>
                     <h3>PDF to JPG</h3>
@@ -345,7 +343,7 @@
                         <span>Batch processing</span>
                     </div>
                     <div class="bento-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
                     </div>
                 </a>
 
@@ -357,7 +355,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/" class="nav-logo">
+                    <a href="index.html" class="nav-logo">
                         <img src="v.png" alt="Veox" width="30" height="30" style="border-radius:6px">
                         Veox
                     </a>
@@ -365,10 +363,10 @@
                 </div>
                 <div class="footer-col">
                     <h4>Tools</h4>
-                    <a href="https://compress-image.veox.org">Image Compression</a>
-                    <a href="https://image-to-text.veox.org">Image to Text</a>
-                    <a href="https://collage.veox.org">Collage Creation</a>
-                    <a href="https://pdf-to-jpg.veox.org">PDF to JPG</a>
+                    <a href="compress-image/index.html">Image Compression</a>
+                    <a href="image-to-text/index.html">Image to Text</a>
+                    <a href="collage/index.html">Collage Creation</a>
+                    <a href="pdf-to-jpg/index.html">PDF to JPG</a>
                 </div>
             </div>
             <div class="footer-bottom">

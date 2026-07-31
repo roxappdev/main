@@ -1,0 +1,28 @@
+.veox-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(245,245,247,0.90);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+}
+.veox-nav-logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1D1D1F;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.veox-nav-logo:hover {
+    color: #1D1D1F;
+}

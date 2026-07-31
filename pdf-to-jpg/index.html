@@ -1,0 +1,459 @@
+<html lang="en-US"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Save PDF as JPG - Online PDF to JPG Converter</title>
+    <meta name="description" content="Learn how to save PDF as JPG with our online converter. Convert PDF pages to high-quality JPG images instantly - no signup, no upload limits.">
+    <meta name="keywords" content="how to save pdf as jpg, pdf to jpg converter, convert pdf to jpg, pdf to image, save pdf pages as jpg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="http://pdf-to-jpg.veox.org/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to Save PDF as JPG - Online PDF to JPG Converter">
+    <meta property="og:description" content="Learn how to save PDF as JPG with our online converter. Convert PDF pages to high-quality JPG images instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://pdf-to-jpg.veox.org/">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Save PDF as JPG - Online PDF to JPG Converter">
+    <meta name="twitter:description" content="Learn how to save PDF as JPG with our online converter. Convert PDF pages to high-quality JPG images instantly.">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "PDF to JPG Converter",
+        "url": "http://pdf-to-jpg.veox.org/",
+        "description": "Online tool to convert PDF pages to JPG images. No upload required, all processing happens in your browser.",
+        "applicationCategory": "Multimedia",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <!-- Critical CSS (inlined for fast first paint) -->
+    <style>
+        /* Reset & Base */
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1e293b;background:#ffffff;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        a{color:#2563eb;text-decoration:none;transition:color 0.3s cubic-bezier(0.4,0,0.2,1)}
+        a:hover{color:#1d4ed8}
+        img{max-width:100%;height:auto}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+        /* CSS Custom Properties */
+        :root{--primary:#2563eb;--primary-dark:#1d4ed8;--primary-light:#3b82f6;--primary-bg:#eff6ff;--secondary:#f59e0b;--success:#10b981;--error:#ef4444;--text-primary:#1e293b;--text-secondary:#475569;--text-light:#64748b;--bg-primary:#ffffff;--bg-secondary:#f8fafc;--bg-dark:#0f172a;--border:#e2e8f0;--border-dark:#cbd5e1;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -2px rgba(0,0,0,0.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -4px rgba(0,0,0,0.1);--shadow-xl:0 20px 25px -5px rgba(0,0,0,0.1),0 8px 10px -6px rgba(0,0,0,0.1);--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:20px;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--transition:0.3s cubic-bezier(0.4,0,0.2,1)}
+
+        /* Header */
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow var(--transition)}
+        .header.scrolled{box-shadow:var(--shadow-md)}
+        .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+        .logo{display:flex;align-items:center;gap:10px;font-size:1.5rem;font-weight:800;color:var(--text-primary);text-decoration:none}
+        .logo i{color:var(--error);font-size:1.75rem}
+        .logo-highlight{color:var(--primary)}
+        .nav-links{display:flex;gap:32px}
+        .nav-link{color:var(--text-secondary);font-weight:500;font-size:0.95rem;transition:color var(--transition);position:relative}
+        .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--primary);transition:width var(--transition)}
+        .nav-link:hover{color:var(--primary)}
+        .nav-link:hover::after{width:100%}
+
+        /* Hero */
+        .hero{padding:140px 0 80px;background:linear-gradient(135deg,var(--primary-bg) 0%,#f0f9ff 50%,#fdf2f8 100%);position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+        .hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+        .hero-content{text-align:center;max-width:800px;margin:0 auto 60px;position:relative;z-index:1}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(37,99,235,0.1);color:var(--primary);border-radius:50px;font-size:0.875rem;font-weight:600;margin-bottom:24px;border:1px solid rgba(37,99,235,0.2)}
+        .hero-badge i{font-size:1rem}
+        .hero-title{font-size:3.25rem;font-weight:800;line-height:1.15;margin-bottom:16px;color:var(--text-primary);letter-spacing:-0.02em}
+        .hero-subtitle{display:block;font-size:1.5rem;font-weight:600;color:var(--primary);margin-top:8px;letter-spacing:-0.01em}
+        .hero-description{font-size:1.15rem;color:var(--text-secondary);line-height:1.7;max-width:680px;margin:0 auto}
+
+        /* Converter Card */
+        .converter-card{max-width:720px;margin:0 auto;background:var(--bg-primary);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);padding:40px;position:relative;z-index:1;border:1px solid var(--border)}
+        .converter-header{text-align:center;margin-bottom:32px}
+        .converter-header h2{font-size:1.5rem;font-weight:700;margin-bottom:8px;color:var(--text-primary)}
+        .converter-header p{color:var(--text-secondary);font-size:0.95rem}
+
+        /* Upload Area */
+        .upload-area{border:2px dashed var(--border-dark);border-radius:var(--radius-lg);padding:60px 40px;text-align:center;cursor:pointer;transition:all var(--transition);background:var(--bg-secondary)}
+        .upload-area:hover,.upload-area.drag-over{border-color:var(--primary);background:var(--primary-bg)}
+        .upload-content{pointer-events:none}
+        .upload-icon{font-size:3.5rem;color:var(--primary);margin-bottom:16px;opacity:0.8}
+        .upload-area h3{font-size:1.25rem;font-weight:600;margin-bottom:8px;color:var(--text-primary)}
+        .upload-area p{color:var(--text-secondary);margin-bottom:12px}
+        .upload-hint{display:inline-block;font-size:0.8rem;color:var(--text-light);padding:4px 12px;background:var(--bg-primary);border-radius:50px;border:1px solid var(--border)}
+
+        /* Loading State */
+        .loading-state{text-align:center;padding:40px}
+        .spinner{width:48px;height:48px;border:4px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 20px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .loading-state p{color:var(--text-secondary);font-size:1rem;margin-bottom:20px}
+        .progress-bar{width:100%;max-width:400px;height:6px;background:var(--border);border-radius:10px;margin:0 auto;overflow:hidden}
+        .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-light));border-radius:10px;transition:width 0.3s ease;width:0%}
+
+        /* Buttons */
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:none;border-radius:var(--radius-sm);font-family:var(--font);font-size:0.95rem;font-weight:600;cursor:pointer;transition:all var(--transition);text-decoration:none}
+        .btn-primary{background:var(--primary);color:white}
+        .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+        .btn-secondary{background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border)}
+        .btn-secondary:hover{background:var(--border);transform:translateY(-1px)}
+
+        /* Error State */
+        .error-state{text-align:center;padding:40px}
+        .error-icon{font-size:3rem;color:var(--error);margin-bottom:16px}
+        .error-state h3{font-size:1.25rem;font-weight:600;margin-bottom:8px}
+        .error-state p{color:var(--text-secondary);margin-bottom:20px}
+
+        /* Results */
+        .results{animation:fadeIn 0.4s ease}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+        .results-header h3{font-size:1.15rem;font-weight:600}
+        .results-actions{display:flex;gap:10px;flex-wrap:wrap}
+        .results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+        .result-item{background:var(--bg-secondary);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border);transition:transform var(--transition),box-shadow var(--transition)}
+        .result-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+        .result-item img{width:100%;height:160px;object-fit:cover;display:block;background:#fff}
+        .result-item-info{padding:12px;display:flex;align-items:center;justify-content:space-between}
+        .result-item-name{font-size:0.85rem;font-weight:500;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;margin-right:8px}
+        .result-item .btn-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-primary);color:var(--text-secondary);cursor:pointer;transition:all var(--transition);flex-shrink:0}
+        .result-item .btn-icon:hover{background:var(--primary);color:white;border-color:var(--primary)}
+
+        /* Footer */
+        .footer{background:var(--bg-dark);color:white;padding:60px 0 0}
+        .footer-content{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .footer-brand .logo{color:white;margin-bottom:16px}
+        .footer-brand .logo i{color:#fca5a5}
+        .footer-brand p{color:rgba(255,255,255,0.85);font-size:0.9rem;line-height:1.7;max-width:320px}
+        .footer-links h3{font-size:0.95rem;font-weight:600;margin-bottom:16px;color:white}
+        .footer-links a{display:block;color:rgba(255,255,255,0.85);font-size:0.9rem;margin-bottom:10px;transition:color 0.3s cubic-bezier(0.4,0,0.2,1)}
+        .footer-links a:hover{color:white}
+        .footer-bottom{padding:24px 0;text-align:center}
+        .footer-bottom p{color:rgba(255,255,255,0.7);font-size:0.85rem}
+
+        /* Responsive (critical) */
+        @media(max-width:1024px){.hero-title{font-size:2.75rem}.hero-subtitle{font-size:1.25rem}}
+        @media(max-width:768px){.hero{padding:120px 0 60px}.hero-title{font-size:2.25rem}.hero-subtitle{font-size:1.1rem}.hero-description{font-size:1rem}.converter-card{padding:24px;border-radius:var(--radius-lg)}.upload-area{padding:40px 24px}.nav-links{display:none}}
+        @media(max-width:480px){.hero-title{font-size:1.75rem}.hero-subtitle{font-size:1rem}.converter-card{padding:16px}.upload-area{padding:32px 16px}.upload-icon{font-size:2.5rem}}
+    </style>
+
+    <!-- Font Awesome (async) -->
+    <link rel="stylesheet" href="vendor/fontawesome.min.css" media="all" onload="this.media='all'; this.onload=null">
+    <noscript><link rel="stylesheet" href="vendor/fontawesome.min.css"></noscript>
+
+    <!-- Main Styles (async) -->
+    <link rel="stylesheet" href="styles.css" media="all" onload="this.media='all'; this.onload=null">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!-- PDF.js (deferred) -->
+    <script src="vendor/pdf.min.js" defer=""></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav" aria-label="Main navigation">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>PDF<span class="logo-highlight">2</span>JPG</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#how-to-use" class="nav-link">How to Use</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        Secure &amp; Private — No Upload Required
+                    </div>
+                    <h1 class="hero-title">
+                        How to Save PDF as JPG
+                        <span class="hero-subtitle">Convert PDF Pages to Images Instantly</span>
+                    </h1>
+                    <p class="hero-description">
+                        Learn how to save PDF as JPG with our online converter.
+                        Just upload your PDF, select the pages, and download high-quality JPG images.
+                        All processing happens in your browser — nothing is uploaded to any server.
+                    </p>
+                </div>
+
+                <!-- Converter Tool -->
+                <div class="converter-card" id="converter">
+                    <div class="converter-header">
+                        <h2>PDF to JPG Converter</h2>
+                        <p>Upload a PDF and convert its pages to JPG images</p>
+                    </div>
+
+                    <!-- Upload Area -->
+                    <div class="upload-area" id="uploadArea" role="button" tabindex="0" aria-label="Upload PDF file">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt upload-icon" aria-hidden="true"></i>
+                            <h3>Drop your PDF here</h3>
+                            <p>or click to browse files</p>
+                            <span class="upload-hint">Maximum file size: 50 MB</span>
+                        </div>
+                        <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden="">
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-state" id="loadingState" style="display: none;" role="status" aria-live="polite">
+                        <div class="spinner" aria-hidden="true"></div>
+                        <p>Processing your PDF...</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="results" id="results" style="display: none;" aria-live="polite">
+                        <div class="results-header">
+                            <h3>Converted Pages</h3>
+                            <div class="results-actions">
+                                <button class="btn btn-secondary" id="downloadAllBtn">
+                                    <i class="fas fa-download" aria-hidden="true"></i>
+                                    Download All as ZIP
+                                </button>
+                                <button class="btn btn-secondary" id="convertAnotherBtn">
+                                    <i class="fas fa-redo" aria-hidden="true"></i>
+                                    Convert Another
+                                </button>
+                            </div>
+                        </div>
+                        <div class="results-grid" id="resultsGrid"></div>
+                    </div>
+
+                    <!-- Error State -->
+                    <div class="error-state" id="errorState" style="display: none;" role="alert">
+                        <i class="fas fa-exclamation-circle error-icon" aria-hidden="true"></i>
+                        <h3>Something went wrong</h3>
+                        <p id="errorMessage">An error occurred while processing your PDF.</p>
+                        <button class="btn btn-primary" id="retryBtn">
+                            <i class="fas fa-redo" aria-hidden="true"></i>
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Use Section -->
+        <section class="section" id="how-to-use">
+            <div class="container">
+                <h2 class="section-title">How to Save PDF as JPG in 3 Simple Steps</h2>
+                <p class="section-description">
+                    Learning how to save PDF as JPG has never been easier. Follow these simple steps:
+                </p>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number" aria-hidden="true">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-file-upload" aria-hidden="true"></i>
+                        </div>
+                        <h3>Upload Your PDF</h3>
+                        <p>Click the upload area or drag and drop your PDF file. We support files up to 50 MB.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number" aria-hidden="true">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-cog" aria-hidden="true"></i>
+                        </div>
+                        <h3>Automatic Conversion</h3>
+                        <p>Our tool instantly converts each page of your PDF into a high-quality JPG image. No buttons to click!</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number" aria-hidden="true">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                        </div>
+                        <h3>Download JPG Images</h3>
+                        <p>Download individual images or all pages as a ZIP file. Your files never leave your computer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section section-dark" id="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose Our PDF to JPG Converter?</h2>
+                <p class="section-description">
+                    When you need to save PDF as JPG, our converter offers everything you need:
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <h3>100% Secure &amp; Private</h3>
+                        <p>All processing happens in your browser. Your files never leave your computer, ensuring complete privacy.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Convert PDF to JPG instantly. No waiting for uploads or server processing — results appear immediately.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-image" aria-hidden="true"></i>
+                        </div>
+                        <h3>High Quality Output</h3>
+                        <p>Get crisp, clear JPG images at 300 DPI resolution. Perfect for printing, sharing, or archiving.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-infinity" aria-hidden="true"></i>
+                        </div>
+                        <h3>No Signup Required</h3>
+                        <p>Convert PDF files with no restrictions. No signup, no watermarks, no hidden fees.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Works on Any Device</h3>
+                        <p>Use on desktop, tablet, or phone. Our tool works in any modern browser without installing software.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-archive" aria-hidden="true"></i>
+                        </div>
+                        <h3>Batch Download</h3>
+                        <p>Save time by downloading all converted pages as a single ZIP file with one click.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" id="faq">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">
+                    Everything you need to know about how to save PDF as JPG:
+                </p>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>How do I save a PDF as a JPG?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>To save a PDF as a JPG, simply upload your PDF file to our converter above. Each page will be automatically converted to a high-quality JPG image. You can then download individual images or all pages as a ZIP file. It requires no registration.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Is it safe to convert PDF to JPG online?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, it's completely safe. Our converter processes everything directly in your browser using JavaScript. Your PDF files are never uploaded to any server — they stay on your computer the entire time. This means your documents remain private and secure.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>What is the maximum PDF file size?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You can convert PDF files up to 50 MB in size. Since all processing happens in your browser, the limit depends on your device's available memory. For best performance, we recommend files under 50 MB.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Can I convert multiple PDF pages at once?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! When you upload a PDF with multiple pages, our tool automatically converts every page to a JPG image. You can download each image individually or use the "Download All as ZIP" button to save all pages at once.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>What quality are the converted JPG images?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our converter produces high-quality JPG images at 300 DPI resolution. This ensures your images are crisp and clear, suitable for both digital use and printing. The quality is optimized to balance file size and image clarity.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Do I need to install any software?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No installation is required! Our PDF to JPG converter works entirely in your web browser. Just open the page, upload your PDF, and download the converted images. It works on Windows, Mac, Linux, and even mobile devices.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Is there a limit on how many PDFs I can convert?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, there are no limits! You can convert as many PDF files as you want. There's no daily limit, no watermark, and no hidden fees. Use it as often as you need.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF<span class="logo-highlight">2</span>JPG</span>
+                    </a>
+                    <p>Online PDF to JPG converter. All processing happens in your browser — 100% secure and private.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="#how-to-use">How to Use</a>
+                    <a href="#features">Features</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 PDF2JPG. All rights reserved. | How to Save PDF as JPG</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JSZip (deferred) -->
+    <script src="vendor/jszip.min.js" defer=""></script>
+    <!-- FileSaver (deferred) -->
+    <script src="vendor/FileSaver.min.js" defer=""></script>
+    <!-- Main Script (deferred) -->
+    <script src="script.js" defer=""></script>
+
+</body></html>

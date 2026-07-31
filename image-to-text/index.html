@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract text from image — Veox</title>
+    <link rel="icon" href="../v.png" type="image/png">
+    <link rel="stylesheet" href="../navbar.css">
+    <script src="dist/tesseract.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h3 {
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .upload-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .file-input {
+            margin: 15px 0;
+        }
+        .preview-section {
+            display: none;
+            margin-bottom: 20px;
+        }
+        #imagePreview {
+            max-width: 100%;
+            max-height: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .result-section {
+            display: none;
+            margin-top: 20px;
+        }
+        #resultText {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            resize: vertical;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            color: #666;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .error {
+            color: #d32f2f;
+            background-color: #ffebee;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="veox-nav">
+        <a href="../index.html" class="veox-nav-logo">
+            <img src="../v.png" alt="Veox" width="24" height="24" style="border-radius:5px">
+            Veox
+        </a>
+    </nav>
+    <div class="container">
+        <h1>Extract text from image</h1>
+
+        <div class="upload-section">
+            <h3>Upload an image to recognize text</h3>
+            <input type="file" id="fileInput" class="file-input" accept="image/*">
+            <p>Supported formats: PNG, JPG, JPEG, BMP, GIF</p>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p id="status">Initializing OCR...</p>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <div class="preview-section" id="previewSection">
+            <h3>Image Preview:</h3>
+            <img id="imagePreview" alt="Preview of uploaded image">
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <h3>Recognized Text:</h3>
+            <textarea id="resultText" readonly placeholder="Recognized text will appear here..."></textarea>
+            <div style="margin-top: 10px;">
+                <button onclick="copyToClipboard()">Copy Text</button>
+                <button onclick="clearAll()" style="background-color: #f44336; margin-left: 10px;">Clear All</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+  let worker = null;
+  let isProcessing = false;
+
+  async function initializeWorker() {
+    try {
+      worker = await Tesseract.createWorker("eng", 1, {
+        workerPath: "dist/worker.min.js",
+        logger: function(m) {
+          updateProgress(m);
+        }
+      });
+    } catch (error) {
+      showError("Failed to initialize OCR engine: " + error.message);
+    }
+  }
+
+  function updateProgress(message) {
+    const statusElement = document.getElementById('status');
+    const progressElement = document.getElementById('progress');
+    if (message.status === 'recognizing text') {
+      const progress = Math.round(message.progress * 100);
+      progressElement.style.width = progress + '%';
+      statusElement.textContent = `Recognizing text: ${progress}%`;
+    } else if (message.status === 'loading tesseract core') {
+      statusElement.textContent = 'Loading Tesseract core...';
+    } else if (message.status === 'initializing tesseract') {
+      statusElement.textContent = 'Initializing Tesseract...';
+    } else if (message.status === 'loading language traineddata') {
+      statusElement.textContent = 'Loading language data...';
+    }
+  }
+
+  function showError(message) {
+    const errorElement = document.getElementById('error');
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+  }
+
+  function hideError() {
+    document.getElementById('error').style.display = 'none';
+  }
+
+  document.getElementById('fileInput').addEventListener('change', async function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    if (isProcessing) { alert("Please wait for the current processing to complete"); return; }
+    if (!file.type.startsWith('image/')) { showError("Please select an image file"); return; }
+
+    hideError();
+    isProcessing = true;
+
+    const previewSection = document.getElementById('previewSection');
+    const imagePreview = document.getElementById('imagePreview');
+    const url = URL.createObjectURL(file);
+    imagePreview.src = url;
+    previewSection.style.display = 'block';
+    document.getElementById('resultSection').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('progress').style.width = '0%';
+
+    try {
+      if (!worker) { await initializeWorker(); }
+      const result = await worker.recognize(file);
+      document.getElementById('resultText').value = result.data.text;
+      document.getElementById('resultSection').style.display = 'block';
+    } catch (error) {
+      showError("Error recognizing text: " + error.message);
+    } finally {
+      document.getElementById('loading').style.display = 'none';
+      isProcessing = false;
+      URL.revokeObjectURL(url);
+    }
+  });
+
+  function copyToClipboard() {
+    const textarea = document.getElementById('resultText');
+    textarea.select();
+    document.execCommand('copy');
+    alert("Text copied to clipboard!");
+  }
+
+  function clearAll() {
+    document.getElementById('fileInput').value = '';
+    document.getElementById('previewSection').style.display = 'none';
+    document.getElementById('resultSection').style.display = 'none';
+    document.getElementById('resultText').value = '';
+    document.getElementById('loading').style.display = 'none';
+    hideError();
+    isProcessing = false;
+  }
+
+  window.addEventListener('beforeunload', async function() {
+    if (worker) { await worker.terminate(); }
+  });
+</script>
+</body>
+</html>
