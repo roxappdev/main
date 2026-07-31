@@ -1,4 +1,6 @@
-<html lang="en-US"><head>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Save PDF as JPG - Online PDF to JPG Converter</title>
@@ -152,22 +154,22 @@
     </style>
 
     <!-- Font Awesome (async) -->
-    <link rel="stylesheet" href="vendor/fontawesome.min.css" media="all" onload="this.media='all'; this.onload=null">
+    <link rel="stylesheet" href="vendor/fontawesome.min.css" media="print" onload="this.media='all'; this.onload=null">
     <noscript><link rel="stylesheet" href="vendor/fontawesome.min.css"></noscript>
 
     <!-- Main Styles (async) -->
-    <link rel="stylesheet" href="styles.css" media="all" onload="this.media='all'; this.onload=null">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'; this.onload=null">
     <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
     <!-- PDF.js (deferred) -->
-    <script src="vendor/pdf.min.js" defer=""></script>
+    <script src="vendor/pdf.min.js" defer></script>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="nav" aria-label="Main navigation">
-                <a href="../index.html" class="logo">
+                <a href="/" class="logo">
                     <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <span>PDF<span class="logo-highlight">2</span>JPG</span>
                 </a>
@@ -187,7 +189,7 @@
                 <div class="hero-content">
                     <div class="hero-badge">
                         <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        Secure &amp; Private — No Upload Required
+                        Secure & Private — No Upload Required
                     </div>
                     <h1 class="hero-title">
                         How to Save PDF as JPG
@@ -215,7 +217,7 @@
                             <p>or click to browse files</p>
                             <span class="upload-hint">Maximum file size: 50 MB</span>
                         </div>
-                        <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden="">
+                        <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
                     </div>
 
                     <!-- Loading State -->
@@ -307,7 +309,7 @@
                         <div class="feature-icon">
                             <i class="fas fa-lock" aria-hidden="true"></i>
                         </div>
-                        <h3>100% Secure &amp; Private</h3>
+                        <h3>100% Secure & Private</h3>
                         <p>All processing happens in your browser. Your files never leave your computer, ensuring complete privacy.</p>
                     </div>
                     <div class="feature-card">
@@ -430,7 +432,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="../index.html" class="logo">
+                    <a href="/" class="logo">
                         <i class="fas fa-file-pdf"></i>
                         <span>PDF<span class="logo-highlight">2</span>JPG</span>
                     </a>
@@ -444,16 +446,16 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 PDF2JPG. All rights reserved. | How to Save PDF as JPG</p>
+                <p>&copy; 2026 PDF2JPG. All rights reserved. | How to Save PDF as JPG</p>
             </div>
         </div>
     </footer>
 
     <!-- JSZip (deferred) -->
-    <script src="vendor/jszip.min.js" defer=""></script>
+    <script src="vendor/jszip.min.js" defer></script>
     <!-- FileSaver (deferred) -->
-    <script src="vendor/FileSaver.min.js" defer=""></script>
+    <script src="vendor/FileSaver.min.js" defer></script>
     <!-- Main Script (deferred) -->
-    <script src="script.js" defer=""></script>
-
-</body></html>
+    <script src="script.js" defer></script>
+</body>
+</html>

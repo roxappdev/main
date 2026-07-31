@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extract text from image — Veox</title>
-    <link rel="icon" href="../v.png" type="image/png">
-    <link rel="stylesheet" href="../navbar.css">
+    <title>Extract text from image</title>
     <script src="dist/tesseract.min.js"></script>
     <style>
         body {
@@ -108,65 +106,66 @@
     </style>
 </head>
 <body>
-    <nav class="veox-nav">
-        <a href="../index.html" class="veox-nav-logo">
-            <img src="../v.png" alt="Veox" width="24" height="24" style="border-radius:5px">
-            Veox
-        </a>
-    </nav>
-    <div class="container">
-        <h1>Extract text from image</h1>
+<div class="container">
+    <h1>Extract text from image</h1>
 
-        <div class="upload-section">
-            <h3>Upload an image to recognize text</h3>
-            <input type="file" id="fileInput" class="file-input" accept="image/*">
-            <p>Supported formats: PNG, JPG, JPEG, BMP, GIF</p>
+    <div class="upload-section">
+        <h3>Upload an image to recognize text</h3>
+        <input type="file" id="fileInput" class="file-input" accept="image/*">
+        <p>Supported formats: PNG, JPG, JPEG, BMP, GIF</p>
+    </div>
+
+    <div class="loading" id="loading">
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
         </div>
+        <p id="status">Initializing OCR...</p>
+    </div>
 
-        <div class="loading" id="loading">
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-            </div>
-            <p id="status">Initializing OCR...</p>
-        </div>
+    <div class="error" id="error"></div>
 
-        <div class="error" id="error"></div>
+    <div class="preview-section" id="previewSection">
+        <h3>Image Preview:</h3>
+        <img id="imagePreview" alt="Preview of uploaded image">
+    </div>
 
-        <div class="preview-section" id="previewSection">
-            <h3>Image Preview:</h3>
-            <img id="imagePreview" alt="Preview of uploaded image">
-        </div>
-
-        <div class="result-section" id="resultSection">
-            <h3>Recognized Text:</h3>
-            <textarea id="resultText" readonly placeholder="Recognized text will appear here..."></textarea>
-            <div style="margin-top: 10px;">
-                <button onclick="copyToClipboard()">Copy Text</button>
-                <button onclick="clearAll()" style="background-color: #f44336; margin-left: 10px;">Clear All</button>
-            </div>
+    <div class="result-section" id="resultSection">
+        <h3>Recognized Text:</h3>
+        <textarea id="resultText" readonly placeholder="Recognized text will appear here..."></textarea>
+        <div style="margin-top: 10px;">
+            <button onclick="copyToClipboard()">Copy Text</button>
+            <button onclick="clearAll()" style="background-color: #f44336; margin-left: 10px;">Clear All</button>
         </div>
     </div>
+</div>
 
 <script>
   let worker = null;
   let isProcessing = false;
 
+  // Инициализация Tesseract worker
   async function initializeWorker() {
     try {
       worker = await Tesseract.createWorker("eng", 1, {
         workerPath: "dist/worker.min.js",
+        corePath: "public/core",
+        //langPath: "https://tessdata.projectnaptha.com/4.0.0_fast",
         logger: function(m) {
           updateProgress(m);
         }
       });
+      console.log("Tesseract worker initialized");
     } catch (error) {
+      console.error("Ошибка инициализации Tesseract:", error);
       showError("Failed to initialize OCR engine: " + error.message);
     }
   }
 
+  // Обновление прогресса
   function updateProgress(message) {
     const statusElement = document.getElementById('status');
     const progressElement = document.getElementById('progress');
+
     if (message.status === 'recognizing text') {
       const progress = Math.round(message.progress * 100);
       progressElement.style.width = progress + '%';
@@ -180,48 +179,78 @@
     }
   }
 
+  // Показать ошибку
   function showError(message) {
     const errorElement = document.getElementById('error');
     errorElement.textContent = message;
     errorElement.style.display = 'block';
   }
 
+  // Скрыть ошибку
   function hideError() {
     document.getElementById('error').style.display = 'none';
   }
 
+  // File upload handling
   document.getElementById('fileInput').addEventListener('change', async function(event) {
     const file = event.target.files[0];
     if (!file) return;
-    if (isProcessing) { alert("Please wait for the current processing to complete"); return; }
-    if (!file.type.startsWith('image/')) { showError("Please select an image file"); return; }
+
+    if (isProcessing) {
+      alert("Please wait for the current processing to complete");
+      return;
+    }
+
+    // File type validation
+    if (!file.type.startsWith('image/')) {
+      showError("Please select an image file");
+      return;
+    }
 
     hideError();
     isProcessing = true;
 
+    // Show preview
     const previewSection = document.getElementById('previewSection');
     const imagePreview = document.getElementById('imagePreview');
     const url = URL.createObjectURL(file);
     imagePreview.src = url;
     previewSection.style.display = 'block';
+
+    // Hide previous results
     document.getElementById('resultSection').style.display = 'none';
+
+    // Show loading
     document.getElementById('loading').style.display = 'block';
     document.getElementById('progress').style.width = '0%';
 
     try {
-      if (!worker) { await initializeWorker(); }
+      // Initialize worker if not created yet
+      if (!worker) {
+        await initializeWorker();
+      }
+
+      // Recognize text
       const result = await worker.recognize(file);
+
+      // Show result
       document.getElementById('resultText').value = result.data.text;
       document.getElementById('resultSection').style.display = 'block';
+
+      console.log("Recognition completed:", result.data);
+
     } catch (error) {
+      console.error("Recognition error:", error);
       showError("Error recognizing text: " + error.message);
     } finally {
+      // Hide loading
       document.getElementById('loading').style.display = 'none';
       isProcessing = false;
       URL.revokeObjectURL(url);
     }
   });
 
+  // Copy text to clipboard
   function copyToClipboard() {
     const textarea = document.getElementById('resultText');
     textarea.select();
@@ -229,6 +258,7 @@
     alert("Text copied to clipboard!");
   }
 
+  // Clear all
   function clearAll() {
     document.getElementById('fileInput').value = '';
     document.getElementById('previewSection').style.display = 'none';
@@ -239,9 +269,27 @@
     isProcessing = false;
   }
 
-  window.addEventListener('beforeunload', async function() {
-    if (worker) { await worker.terminate(); }
+  // Initialize on page load
+  window.addEventListener('load', function() {
+    console.log("Page loaded, initializing Tesseract...");
   });
+
+  // Cleanup worker on page close
+  window.addEventListener('beforeunload', async function() {
+    if (worker) {
+      await worker.terminate();
+      console.log("Tesseract worker terminated");
+    }
+  });
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVWHRZCT86"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NVWHRZCT86');
 </script>
 </body>
 </html>
